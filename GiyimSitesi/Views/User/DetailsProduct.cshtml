@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "DetailsProduct";
+}
+@model Product
+
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0"><a href="/user/Index">Anasayfa</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Ürün Detay</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/images/@Model.ImgUrl" alt="Image" class="img-fluid" style="max-height:700px;width:100%">
+            </div>
+            <div class="col-md-6">
+                <br />
+                <h2 class="text-black">@Model.Name</h2>
+                <p>@Html.Raw(Model.Description)</p>
+                @*<p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>*@
+                <p><strong class="text-primary h4">$@Model.Price</strong></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section block-3 site-blocks-2 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 site-section-heading text-center pt-4">
+                <h2>Özel Ürünler</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nonloop-block-3 owl-carousel">
+                    @foreach (var item in (List<GiyimSitesi.Context.Entity.Product>)ViewBag.BenzerUrunler)
+                    {
+                        var truncatedName = item.Name.Length > 20 ? item.Name.Substring(0, 20) + "..." : item.Name;
+                        <div class="item">
+                            <div class="block-4 text-center" style="overflow: hidden;">
+                                <figure class="block-4-image" style="height: 400px; overflow: hidden;">
+                                    <img src="~/images/@item.ImgUrl" alt="Resim yeri tutucu" class="img-fluid responsiveImg" style="height: 100%; width: 100%;">
+                                </figure>
+                                <div style="height: 100%; width: 100%;style=" overflow: hidden;"" class="block-4-text p-4">
+                                    @* <p class="text-primary font-weight-bold">@truncatedName</p>
+                                <p class="text-primary font-weight-bold;" style="font-size:20px;">$@item.Price</p>
+                                <div style="text-align:center;padding-bottom:5px"><a href="/User/DetailsProduct/@item.Id" type="button" class="btn btn-primary">Detaylar</a></div> *@
+                                    <h3 style="color:darkmagenta;font-size:30px">@truncatedName</h3>
+                                    <p class="p-2" style="font-size:22px;color:darkblue;font-weight:bold">$ @item.Price</p>
+                                    <div style="font-size:10px;text-align:center"><a href="/User/DetailsProduct/@item.Id" type="button" class="btn btn-primary">Detaylar</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

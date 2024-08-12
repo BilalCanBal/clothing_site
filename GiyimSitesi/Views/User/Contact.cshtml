@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+@model Contact
+
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0"><a href="index.html">Anasayfa</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">İletişim</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class=" container col-md-10">
+                <h2 class="h3 mb-3 text-black">İletişime Geç</h2>
+            </div>
+            <div class="container col-md-10 ">
+
+                <form method="post" asp-controller="User" asp-action="Contact">
+
+                    <div class="p-3 p-lg-5 border">
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="c_fname" class="text-black">İsim <span class="text-danger">*</span></label>
+                                <input asp-for="Name" required type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_lname" class="text-black">Soyisim <span class="text-danger">*</span></label>
+                                <input asp-for="Surname" required type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_email" class="text-black">E-mail <span class="text-danger">*</span></label>
+                                <input asp-for="Email" required type="email" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_message" class="text-black">Mesaj </label>
+                                <textarea asp-for="Description" required cols="30" rows="7" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Mesaj Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+

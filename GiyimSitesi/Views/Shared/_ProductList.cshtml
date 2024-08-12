@@ -1,0 +1,47 @@
+﻿@model ProductViewModel
+
+<div id="deleteddiv" class="row mb-5">
+    @foreach (var item in Model.Products)
+    {
+        <div id="deleteddiv" class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+            <div class="block-4 text-center border">
+                <figure class="block-4-image">
+                    <a href="shop-single.html"><img src="~/images/@item.ImgUrl" alt="Image placeholder" class="img-fluid"></a>
+                </figure>
+                <div class="block-4-text p-4">
+                    <h3><a href="shop-single.html">@item.Name</a></h3>
+                    <p class="mb-0">@item.Description</p>
+                    <p class="text-primary font-weight-bold">$@item.Price</p>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+</div>
+<div id="paginationContainer" class="row" data-aos="fade-up">
+    <div class="col-md-12 text-center">
+        <div class="site-block-27">
+            <ul>
+
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <li class="@(i == Model.PageNumber ? "active" : "")">
+                        @if (i != Model.PageNumber)
+                        {
+                            <a href="@Url.Action("FilterProducts", new { page = i })">@i</a>
+                        }
+                        else
+                        {
+                            <span>@i</span>
+                        }
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+

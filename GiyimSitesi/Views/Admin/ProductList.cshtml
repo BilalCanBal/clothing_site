@@ -1,0 +1,73 @@
+﻿@model List<Product>
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+    .center {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+        .center img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+</style>
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["DeleteMessage"]
+    </div>
+}
+<div class="row">
+    <div class="container col-11">
+        <br />
+        <h1>Ürünler</h1>
+        <hr />
+        <br />
+        <table class="table table-bordered table-striped table-hover table-dark">
+            <thead>
+                <tr>
+                    <th class="center">Id</th>
+                    <th class="center">Ürün Adı</th>
+                    <th class="center">Fiyat</th>
+                    <th class="center">Kategori</th>
+                    <th class="center">Detaylar</th>
+                    <th class="center">Resim</th>
+                    <th class="center">Düzenle</th>
+                    <th class="center">Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center justify-content-center" >
+                        <td class="center">@item.Id</td>
+                        <td class="center">@item.Name</td>
+                        <td class="center">@item.Price TL</td>
+                        <td class="center">@item.Category.Name</td>
+                        <td class="center">@Html.Raw(item.Description)</td>
+
+                        @* <td class="center">
+                            <img style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" src="~/images/@item.ImgUrl" />
+                        </td> *@
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.ImgUrl))
+                            {
+                                <img src="~/images/@item.ImgUrl" alt="Kategori Resmi" class="img-thumbnail" style="max-width: 150px; max-height: 150px;" />
+                            }
+                            else
+                            {
+                                <span>Resim Yok</span>
+                            }
+                        </td>
+                        <td style="text-align:center"><a href="/admin/editProduct/@item.Id" type="button" class="btn btn-warning">Düzenle</a></td>
+                        <td><a onclick="confirmSil('Admin','RemoveProduct','@item.Id')" class="text-light btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sil" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i>Sil</a></td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

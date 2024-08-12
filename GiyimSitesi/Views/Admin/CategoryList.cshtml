@@ -1,0 +1,46 @@
+﻿@model List<Category>
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="row">
+    <div class="container col-10">
+        <br />
+        <h1>Kategoriler</h1>
+        <hr />
+        <br />
+        <table class="table table-bordered table-striped table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Kategori Resim</th>
+                    <th>Kategori Adı</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center justify-content-center">
+                        <td>@item.Id</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.ImgUrl))
+                            {
+                                <img src="~/images/@item.ImgUrl" alt="Kategori Resmi" class="img-thumbnail" style="max-width: 100px; max-height: 100px;" />
+                            }
+                            else
+                            {
+                                <span>Resim Yok</span>
+                            }
+                        </td>
+                        <td>@item.Name</td>
+                        <td><a href="/admin/editCategory/@item.Id" type="button" class="btn btn-warning">Düzenle</a></td>
+                        <td><a onclick="confirmSil('Admin','RemoveCategory','@item.Id')" class="text-light btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sil" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i>Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

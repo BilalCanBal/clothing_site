@@ -1,0 +1,46 @@
+﻿@model LoginModel
+
+
+
+
+<div class="row">
+    <div class="container col-8">
+        <br />
+        <h1>Giriş Yap</h1>
+        <hr />
+        <br />
+        <form asp-controller="Account" asp-action="Login" method="POST">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @* <div class="form-group row">
+            <label asp-for="UserName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+            <input class="form-control" asp-for="UserName">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            </div> *@
+
+            <div class="form-group row">
+                <label asp-for="UserName" class="col-sm-2 col-form-label">Kullanıcı Adı:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" asp-for="UserName">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Password" class="col-sm-2 col-form-label">Şifre</label>
+                <div class="col-sm-10">
+                    <input class="form-control" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

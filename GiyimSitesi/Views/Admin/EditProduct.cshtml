@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "EditProduct";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@model Product
+
+
+
+<div class="row">
+
+    <div class="container col-10">
+        <br />
+        <div class="card">
+            <br />
+            <div class="container-fluid">
+                <h3>Ürün Düzenle</h3>
+
+            </div>
+            <hr />
+            <div class="card-body">
+
+                <div class="container-fluid">
+                    <form method="post" asp-controller="Admin" asp-action="EditProduct" enctype="multipart/form-data">
+                        <div class="form-group card card-primary">
+                            <label for="Name">Ürün Adı:</label>
+                            <input asp-for="Name" type="text" required="required" class="form-control"  placeholder="Kategori adını girin">
+                        </div>
+
+                        <div class="form-group card card-primary">
+                            <label for="Ayrıntı">Ayrıntılar:</label>
+                            <textarea name="Description" required>@Html.Raw(Model.Description)</textarea>
+                        </div>
+
+                        <div class="form-group card card-primary">
+                            <label for="Price">Price:</label>
+                            <input asp-for="Price" type="text" required="required" class="form-control" id="Price" name="Price" placeholder="Kategori adını girin">
+                        </div>
+
+                        <div class="form-group card card-primary">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 col-sm-12 text-center mb-3">
+                                    <img id="previewImage" src="~/images/@Model.ImgUrl" alt="Kategori Resmi"  style="max-width: 150px; max-height: 150px;">
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <label for="file" class="form-label">Resim:</label>
+                                    <input type="file" name="file" id="file" class="form-control-file">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group card card-primary">
+                            <label>Select</label>
+                            <select asp-for="CategoryId" name="CategoryId" class="form-control">
+                                <option></option>
+                                @foreach (var item in ViewBag.Urunler)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Ürün Güncelleyiniz</button>
+                    </form>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
