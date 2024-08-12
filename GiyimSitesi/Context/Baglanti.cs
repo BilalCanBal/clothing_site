@@ -10,7 +10,6 @@ namespace GiyimSitesi.Context
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			//optionsBuilder.UseSqlServer("server=77.245.159.10;database=GunesGiyimDB;uid=drnserhat;pwd=Flayer.053215; TrustServerCertificate=true;");
 			optionsBuilder.UseSqlServer("server=DESKTOP-BEJ32B9;database=Giyim3;integrated security=true;TrustServerCertificate=true;");
 		}
 		public Baglanti()
